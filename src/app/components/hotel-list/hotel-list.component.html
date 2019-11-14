@@ -1,3 +1,5 @@
-<p>
-  hotel-list works!
-</p>
+<div *ngFor="let hotel of hoteles">
+  <div class="card container card-hotel">
+    <app-hotel-display [hotel]=hotel></app-hotel-display>
+  </div>
+</div>

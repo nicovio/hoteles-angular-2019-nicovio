@@ -1,0 +1,26 @@
+<div>
+  <div style="margin-top:1rem;margin-bottom: 1rem;" class="row">
+    <div class="col">
+      <a [routerLink]="['../hotel-detail']">
+        <img src={{hotel.imagen}} style="max-width:9rem;">
+      </a>
+    </div>
+    <div style="text-align: left;" class="col">
+      <div>
+        <a [routerLink]="['../hotel-detail']">
+          <h5><strong>{{hotel.nombre}}</strong></h5>
+        </a>
+      </div>
+      <div style="text-align: left;">
+        <p-rating [ngModel]=hotel.estrellas readonly="true" stars="5" [cancel]="false"></p-rating>
+      </div>
+      <div style="text-align: left;">
+        <fa-icon style="color:grey" [icon]="faMapMarker"></fa-icon>
+        {{hotel.ubicacion}}
+      </div>
+    </div>
+    <div class="col">
+      <h5><strong>${{hotel.habitacionMasBarata}}</strong></h5>
+    </div>
+  </div>
+</div>

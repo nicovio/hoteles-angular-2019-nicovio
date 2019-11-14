@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HotelService } from '../services/hotel.service';
+import { Hotel } from 'src/app/domain/hotel';
 
 @Component({
   selector: 'app-hotel-list',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HotelListComponent implements OnInit {
 
-  constructor() { }
+  hoteles: Hotel[]
 
-  ngOnInit() {
+  constructor(private hotelesService: HotelService) { }
+
+  async ngOnInit() {
+    this.hoteles = await this.hotelesService.getHotelesRegistrados()
   }
 
 }
