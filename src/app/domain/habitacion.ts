@@ -1,5 +1,5 @@
 export class Habitacion {
 
-    constructor(public descripcion: String, public precio: Number) { }
+    constructor(public descripcion: String, public precioPorNoche: number) { }
 
 }

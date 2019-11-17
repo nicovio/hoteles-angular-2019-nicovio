@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faBed } from '@fortawesome/free-solid-svg-icons';
+import { HotelService } from '../../services/hotel.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,7 @@ export class NavbarComponent implements OnInit {
 
   faBed = faBed;
 
-  constructor() { }
+  constructor(private hotelService: HotelService) { }
 
   ngOnInit() {
   }

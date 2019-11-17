@@ -7,7 +7,7 @@ import { HotelDetailComponent } from './components/hotel-detail/hotel-detail.com
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'hotel-detail', component: HotelDetailComponent },
+  { path: 'hotel-detail/:id', component: HotelDetailComponent },
 ];
 
 @NgModule({

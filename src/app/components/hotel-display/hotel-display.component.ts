@@ -18,5 +18,9 @@ export class HotelDisplayComponent implements OnInit {
   ngOnInit() {
   }
 
+  disabled() {
+    return true
+  }
+
 
 }

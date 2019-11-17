@@ -14,7 +14,11 @@ export class HotelListComponent implements OnInit {
   constructor(private hotelesService: HotelService) { }
 
   async ngOnInit() {
-    this.hoteles = await this.hotelesService.getHotelesRegistrados()
+    try {
+      this.hoteles = await this.hotelesService.getHotelesRegistrados()
+    } catch (error) {
+      console.log(error)
+    }
   }
 
 }

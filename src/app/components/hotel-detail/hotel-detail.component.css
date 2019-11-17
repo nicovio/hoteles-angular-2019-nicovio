@@ -1,0 +1,41 @@
+.card-extras {
+    padding: 0;
+}
+
+.titulo {
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+.espaciado {
+    padding: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.content {
+    font-size: 1rem;
+}
+
+.titulo-container {
+    background-color: #08d9d6;
+}
+
+.centrado {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.boton {
+    font-size: 1.2rem;
+}
+
+.card-error {
+    color: white;
+    margin-top: 2rem;
+    text-align: center;
+    background-color: red !important;
+}

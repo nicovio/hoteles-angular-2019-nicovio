@@ -1,3 +1,92 @@
-<p>
-  hotel-detail works!
-</p>
+<div *ngIf="hotel" style="max-width: 49rem;margin: auto;">
+  <div style="text-align:center;border-style: solid;margin-top: 2rem;">
+    <app-hotel-display *ngIf="hotel" [hotel]="hotel"></app-hotel-display>
+  </div>
+  <div class="row" style="margin-top:3rem;">
+    <div class="col card card-extras" style="margin-right: 1rem;">
+      <div class="titulo-container">
+        <h5 class="titulo">Habitaciones</h5>
+      </div>
+      <div class="espaciado" *ngFor="let habitacion of hotel.habitaciones">
+        <div class="row">
+          <div>
+            <p-radioButton name="tipo_habitacion" [value]="habitacion" [(ngModel)]="reserva.habitacion">
+            </p-radioButton>
+          </div>
+          <div style="margin-left: 0.5rem;">
+            <p class="content"> <strong>{{habitacion.descripcion}}</strong></p>
+          </div>
+          <div style="text-align: right;" class="col">
+            <p class="content"> <strong>${{habitacion.precioPorNoche | number:'1.0-0'}}</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card card-extras col">
+      <div class="titulo-container">
+        <h5 class="titulo">Servicios adicionales</h5>
+      </div>
+      <div class="espaciado" *ngFor="let servicio of hotel.servicios">
+        <div class="row">
+          <div>
+            <p-checkbox name="groupname{{servicio.descripcion}}" [value]="servicio" [(ngModel)]="reserva.servicios">
+            </p-checkbox>
+          </div>
+          <div style="margin-left: 0.5rem;">
+            <p class="content"> <strong>{{servicio.descripcion}}</strong></p>
+          </div>
+          <div style="text-align: right;" class="col">
+            <p class="content"> <strong>${{servicio.precioPorNoche | number:'1.0-0'}}</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:2rem;" class="card col">
+    <div style="padding: 1rem;">
+      <div class="row centrado">
+        <div class="col">
+          <div class="row">
+            <div class="col-3">
+              <h5>Desde</h5>
+            </div>
+            <div>
+              <p-calendar dateFormat="dd/mm/yy" [locale]="es" [minDate]="minDateValue" showButtonBar="true"
+                [(ngModel)]="reserva.fecha_desde" [showIcon]="true">
+              </p-calendar>
+            </div>
+          </div>
+          <div style="margin-top: 2rem;" class="row">
+            <div class="col-3">
+              <h5>Hasta</h5>
+            </div>
+            <div>
+              <p-calendar dateFormat="dd/mm/yy" [locale]="es" [minDate]="minDateValue" showButtonBar="true"
+                [(ngModel)]="reserva.fecha_hasta" [showIcon]="true"></p-calendar>
+            </div>
+          </div>
+        </div>
+        <div class="col ">
+          <div class="row">
+            <div class="col">
+              <div class="boton"
+                *ngIf="reserva.fecha_desde && reserva.fecha_hasta && reserva.fecha_desde<reserva.fecha_hasta &&  reserva.habitacion">
+                <strong> ${{reserva.precioTotal | number:'1.0-0'}}</strong>
+              </div>
+            </div>
+            <div class="col">
+              <button [disabled]="noPuedeReservar()" (click)="reservar()" pButton type="button" label="Reservar"
+                class="ui-button-raised ui-button-success"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="mostrarErrorFechas()" class="card card-error">
+    Fecha desde debe ser menor a fecha hasta.
+  </div>
+  <!-- <p-messages [(value)]="msgs"></p-messages> -->
+</div>
+
+<p-toast [style]="{marginTop: '80px'}"></p-toast>
