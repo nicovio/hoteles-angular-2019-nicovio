@@ -9,9 +9,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
 import { CheckboxModule } from 'primeng/checkbox';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MenubarModule } from 'primeng/menubar';
-import { MessageModule } from 'primeng/message';
-import { MessagesModule } from 'primeng/messages';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { RatingModule } from 'primeng/rating';
 import { ToastModule } from 'primeng/toast';
@@ -21,6 +20,7 @@ import { HomeComponent } from './components/home/home.component';
 import { HotelDetailComponent } from './components/hotel-detail/hotel-detail.component';
 import { HotelDisplayComponent } from './components/hotel-display/hotel-display.component';
 import { HotelListComponent } from './components/hotel-list/hotel-list.component';
+import { MisReservasComponent } from './components/mis-reservas/mis-reservas.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 
 registerLocaleData(localeEs, 'es-AR', localeEsExtra);
@@ -33,6 +33,7 @@ registerLocaleData(localeEs, 'es-AR', localeEsExtra);
     HotelListComponent,
     HotelDisplayComponent,
     HotelDetailComponent,
+    MisReservasComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,9 +46,8 @@ registerLocaleData(localeEs, 'es-AR', localeEsExtra);
     RadioButtonModule,
     ButtonModule,
     CalendarModule,
-    MessagesModule,
-    MessageModule,
     ToastModule,
+    ConfirmDialogModule,
     AppRoutingModule,
     FontAwesomeModule,
   ],

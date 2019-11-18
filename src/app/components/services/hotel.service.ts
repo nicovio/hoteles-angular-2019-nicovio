@@ -25,11 +25,12 @@ export class HotelService {
   cena: Servicio
   cochera: Servicio
   lavanderia: Servicio
+  lastId: String = "0"
 
   constructor() {
-    this.usuarioLogueado = new Usuario("nicovio")
     this.crearServicios()
     this.crearHoteles()
+    this.crearUsuario()
   }
 
   crearServicios() {
@@ -52,6 +53,22 @@ export class HotelService {
     this.hoteles = [this.lasHayas, this.laCaldera, this.villa_Huapi]
   }
 
+  crearUsuario() {
+    const reserva = new Reserva(this.lasHayas, this.lasHayas.servicios, this.lasHayas.habitaciones[0], new Date(2019, 10, 17), new Date(2019, 10, 28))
+    const reserva2 = new Reserva(this.laCaldera, this.laCaldera.servicios, this.laCaldera.habitaciones[0], new Date(2020, 1, 15), new Date(2020, 1, 28))
+    reserva.id = this.getNextFreeId()
+    reserva2.id = this.getNextFreeId()
+    this.usuarioLogueado = new Usuario("nicovio")
+    this.usuarioLogueado.agregarReserva(reserva)
+    this.usuarioLogueado.agregarReserva(reserva2)
+  }
+
+  getNextFreeId() {
+    const nextId = String(Number(this.lastId) + 1)
+    this.lastId = nextId
+    return nextId
+  }
+
   async getHotelesRegistrados() {
     return Promise.all(this.hoteles)
   }
@@ -62,7 +79,19 @@ export class HotelService {
   }
 
   async nuevaReserva(reserva: Reserva) {
+    reserva.id = this.getNextFreeId()
     this.usuarioLogueado.agregarReserva(reserva)
+  }
+
+  async reservasLogueado() {
+    return Promise.all(this.usuarioLogueado.reservas)
+  }
+
+  async cancelarReserva(reserva: Reserva) {
+    let index = this.usuarioLogueado.reservas.indexOf(reserva);
+    if (index > -1) {
+      this.usuarioLogueado.reservas.splice(index, 1);
+    }
   }
 
 }

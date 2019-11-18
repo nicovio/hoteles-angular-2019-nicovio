@@ -1,5 +1,5 @@
 <div *ngFor="let hotel of hoteles">
   <div [routerLink]="['../hotel-detail', hotel.id]" class="card container card-hotel">
-    <app-hotel-display [hotel]=hotel></app-hotel-display>
+    <app-hotel-display [mostrarPrecioNoche]=true [hotel]=hotel></app-hotel-display>
   </div>
 </div>

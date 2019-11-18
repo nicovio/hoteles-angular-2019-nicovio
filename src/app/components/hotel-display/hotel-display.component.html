@@ -15,8 +15,8 @@
         {{hotel.ubicacion}}
       </div>
     </div>
-    <div class="col">
-      <h5><strong>${{hotel.habitacionMasBarata | number}}</strong></h5>
+    <div *ngIf="mostrarPrecioNoche" class="col">
+      <h5><strong>${{hotel.precioHabitacionMasBarata | number}}</strong></h5>
     </div>
   </div>
 </div>

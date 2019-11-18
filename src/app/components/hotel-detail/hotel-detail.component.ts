@@ -45,24 +45,15 @@ export class HotelDetailComponent implements OnInit {
   }
 
   showSuccess() {
-    this.messageService.add({ severity: 'success', summary: 'Ok', detail: 'Reserva realizada con éxito!'  });
+    this.messageService.add({ severity: 'success', summary: 'Ok', detail: 'Reserva realizada con éxito!' });
   }
 
-  fechasInvalidas() {
-    return this.reserva.fecha_desde >= this.reserva.fecha_hasta
-  }
-
-  noPuedeReservar() {
-    return !this.ingresoFechas() || !this.reserva.habitacion || this.fechasInvalidas()
-  }
-
-  ingresoFechas() {
-    return this.reserva.fecha_desde && this.reserva.fecha_hasta
+  puedeReservar() {
+    return this.reserva.esValida()
   }
 
   mostrarErrorFechas() {
-    return this.ingresoFechas() && this.fechasInvalidas()
-
+    return this.reserva.fecha_desde && this.reserva.fecha_hasta && !this.reserva.fechaDesdeMenorAHasta()
   }
 
   async reservar() {

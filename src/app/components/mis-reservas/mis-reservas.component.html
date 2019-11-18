@@ -1,0 +1,33 @@
+<div style="margin-top: 1rem;margin-bottom: 2rem;" *ngFor="let reserva of reservas">
+  <div class="card container card-hotel">
+    <div class="row">
+      <div class="col">
+        <app-hotel-display [mostrarPrecioNoche]=false [hotel]=reserva.hotel></app-hotel-display>
+      </div>
+      <div style="padding-top: 15px;margin-right: 3rem;">
+        {{reserva.fecha_desde | date: "dd/MM/yyyy"}} - {{reserva.fecha_hasta | date: "dd/MM/yyyy"}}
+        <div>
+          {{reserva.cantidadDeNoches}} noches
+        </div>
+        <div>
+          <h5><strong>${{reserva.precioTotal}}</strong></h5>
+        </div>
+      </div>
+      <div>
+      </div>
+    </div>
+    <div *ngIf="reserva.esCancelable()" style="text-align: center; margin-bottom: 1rem;margin-top: 0.4rem;">
+      <button (click)="cancelar(reserva)" pButton type="button" label="Cancelar"
+        class="ui-button-rounded ui-button-danger"></button>
+    </div>
+  </div>
+</div>
+
+<p-toast [style]="{marginTop: '80px'}"></p-toast>
+
+<p-confirmDialog width="425" icon="fa fa-question-circle" #cd>
+  <p-footer>
+    <button type="button" pButton icon="fa-close" label="No" (click)="cd.reject()"></button>
+    <button type="button" pButton icon="fa-check" label="Si" (click)="cd.accept()"></button>
+  </p-footer>
+</p-confirmDialog>

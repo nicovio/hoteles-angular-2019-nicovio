@@ -1,6 +1,6 @@
 <div *ngIf="hotel" style="max-width: 49rem;margin: auto;">
   <div style="text-align:center;border-style: solid;margin-top: 2rem;">
-    <app-hotel-display *ngIf="hotel" [hotel]="hotel"></app-hotel-display>
+    <app-hotel-display *ngIf="hotel" [mostrarPrecioNoche]=true [hotel]="hotel"></app-hotel-display>
   </div>
   <div class="row" style="margin-top:3rem;">
     <div class="col card card-extras" style="margin-right: 1rem;">
@@ -69,13 +69,12 @@
         <div class="col ">
           <div class="row">
             <div class="col">
-              <div class="boton"
-                *ngIf="reserva.fecha_desde && reserva.fecha_hasta && reserva.fecha_desde<reserva.fecha_hasta &&  reserva.habitacion">
+              <div class="boton" *ngIf="puedeReservar()">
                 <strong> ${{reserva.precioTotal | number:'1.0-0'}}</strong>
               </div>
             </div>
             <div class="col">
-              <button [disabled]="noPuedeReservar()" (click)="reservar()" pButton type="button" label="Reservar"
+              <button [disabled]="!puedeReservar()" (click)="reservar()" pButton type="button" label="Reservar"
                 class="ui-button-raised ui-button-success"></button>
             </div>
           </div>

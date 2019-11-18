@@ -10,8 +10,9 @@ import { Hotel } from 'src/app/domain/hotel';
 export class HotelDisplayComponent implements OnInit {
 
   @Input() hotel: Hotel
+  @Input() mostrarPrecioNoche: boolean
 
-  faMapMarker = faMapMarkerAlt;
+  faMapMarker = faMapMarkerAlt
 
   constructor() { }
 
