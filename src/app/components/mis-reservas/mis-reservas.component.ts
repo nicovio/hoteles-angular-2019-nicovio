@@ -39,4 +39,12 @@ export class MisReservasComponent implements OnInit {
     })
   }
 
+  nochesText(cantidadDeNoches) {
+    if (cantidadDeNoches > 1) {
+      return "noches"
+    }
+    else {
+      return "noche"
+    }
+  }
 }

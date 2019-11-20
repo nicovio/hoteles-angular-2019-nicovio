@@ -7,7 +7,7 @@
       <div style="padding-top: 15px;margin-right: 3rem;">
         {{reserva.fecha_desde | date: "dd/MM/yyyy"}} - {{reserva.fecha_hasta | date: "dd/MM/yyyy"}}
         <div>
-          {{reserva.cantidadDeNoches}} noches
+          {{reserva.cantidadDeNoches}} {{nochesText(reserva.cantidadDeNoches)}}
         </div>
         <div>
           <h5><strong>${{reserva.precioTotal}}</strong></h5>
