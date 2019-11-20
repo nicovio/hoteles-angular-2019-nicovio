@@ -30,7 +30,7 @@ export class MisReservasComponent implements OnInit {
       header: 'Cancelar reserva',
       icon: 'pi pi-info-circle',
       accept: async () => {
-        this.hotelService.cancelarReserva(reserva)
+        await this.hotelService.cancelarReserva(reserva)
         this.messageService.add({ severity: 'info', summary: 'Reserva cancelada' });
         await this.ngOnInit()
       },
