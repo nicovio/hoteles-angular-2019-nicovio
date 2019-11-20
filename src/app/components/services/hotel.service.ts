@@ -25,7 +25,6 @@ export class HotelService {
   cena: Servicio
   cochera: Servicio
   lavanderia: Servicio
-  lastId: String = "0"
 
   constructor() {
     this.crearServicios()
@@ -62,12 +61,12 @@ export class HotelService {
   }
 
   async getHotelesRegistrados() {
-    return Promise.all(this.hoteles)
+    return this.hoteles
   }
 
   async getHotel(id: String) {
-    const hotel = this.hoteles.find(hotel => hotel.id == id)
-    return Promise.resolve(hotel)
+    return this.hoteles.find(hotel => hotel.id == id)
+
   }
 
   async nuevaReserva(reserva: Reserva) {
@@ -75,7 +74,7 @@ export class HotelService {
   }
 
   async reservasLogueado() {
-    return Promise.all(this.usuarioLogueado.reservas)
+    return this.usuarioLogueado.reservas
   }
 
   async cancelarReserva(reserva: Reserva) {
