@@ -56,17 +56,9 @@ export class HotelService {
   crearUsuario() {
     const reserva = new Reserva(this.lasHayas, this.lasHayas.servicios, this.lasHayas.habitaciones[0], new Date(2019, 10, 17), new Date(2019, 10, 28))
     const reserva2 = new Reserva(this.laCaldera, this.laCaldera.servicios, this.laCaldera.habitaciones[0], new Date(2020, 1, 15), new Date(2020, 1, 28))
-    reserva.id = this.getNextFreeId()
-    reserva2.id = this.getNextFreeId()
     this.usuarioLogueado = new Usuario("nicovio")
     this.usuarioLogueado.agregarReserva(reserva)
     this.usuarioLogueado.agregarReserva(reserva2)
-  }
-
-  getNextFreeId() {
-    const nextId = String(Number(this.lastId) + 1)
-    this.lastId = nextId
-    return nextId
   }
 
   async getHotelesRegistrados() {
@@ -79,7 +71,6 @@ export class HotelService {
   }
 
   async nuevaReserva(reserva: Reserva) {
-    reserva.id = this.getNextFreeId()
     this.usuarioLogueado.agregarReserva(reserva)
   }
 
